@@ -1,6 +1,6 @@
 ---
-name: ivy-verification
-description: Use when running formal verification on Ivy models, checking for errors, or verifying protocol specifications. Covers ivy_check workflows, interpreting verification output, and debugging model errors.
+name: Ivy Verification
+description: This skill should be used when the user asks about "running formal verification", "ivy_check workflow", "verifying protocol specifications", "debugging verification failures", "interpreting ivy_check output", "invariant violations", "type safety errors", "verification debugging", or mentions checking Ivy models for correctness in the PANTHER Ivy framework.
 ---
 
 # Ivy Verification Workflow
@@ -13,46 +13,29 @@ invariant preservation, and protocol correctness.
 
 ## Running Verification
 
-### Using Serena (preferred)
+### Using panther-serena MCP tools (required)
 
-When Serena is available with the Ivy LSP backend, use the `execute_shell_command` tool:
+Always use the panther-serena MCP tools for verification. Never run `ivy_check` directly via Bash.
 
-```
-ivy_check <file.ivy>
-```
+**Full model check:**
+Use `mcp__plugin_serena_serena__ivy_check` with `relative_path` pointing to the `.ivy` file.
 
-For specific isolates:
+**Specific isolate check** (faster, targets one component):
+Use `mcp__plugin_serena_serena__ivy_check` with `relative_path` and `isolate` parameters.
 
-```
-ivy_check isolate=<isolate_name> <file.ivy>
-```
+**Model structure inspection:**
+Use `mcp__plugin_serena_serena__ivy_model_info` to understand model structure before verification.
 
-### Common Verification Patterns
+### Verification via Plugin Commands
 
-**Full model check** -- verifies all isolates and exported actions:
-```
-ivy_check protocol_model.ivy
-```
-
-**Single isolate check** -- faster, targets one component:
-```
-ivy_check isolate=protocol_spec protocol_model.ivy
-```
-
-**Check with trace output** -- produces counterexample traces on failure:
-```
-ivy_check trace=true protocol_model.ivy
-```
+- `/nct-check <file>` — Run formal verification on an .ivy file
+- `/nct-check <file> --isolate <name>` — Check a specific isolate
 
 ## Interpreting Results
 
 ### Successful Verification
 
-A successful check produces output like:
-```
-OK
-```
-or lists each checked isolate with `OK` status. This means all proof obligations were discharged.
+A successful check produces output containing `OK` or lists each checked isolate with `OK` status. This means all proof obligations were discharged.
 
 ### Verification Failures
 
@@ -63,47 +46,46 @@ Failures include:
 
 Common failure patterns:
 
-1. **Invariant not preserved** -- an action modifies state in a way that violates a declared invariant.
-   The output shows which action and which invariant clause failed.
+1. **Invariant not preserved** — an action modifies state in a way that violates a declared invariant.
    ```
    error: failed to verify invariant preservation in action client.send
    ```
    Fix: strengthen the invariant, add preconditions to the action, or fix the action logic.
 
-2. **Type safety error** -- a value is used with an incompatible type.
+2. **Type safety error** — a value is used with an incompatible type.
    ```
    error: type mismatch at line 42: expected packet_type, got nat
    ```
    Fix: ensure all variables and expressions have consistent types.
 
-3. **Ungrounded relation** -- a relation is used in a way that leaves variables unbound.
+3. **Ungrounded relation** — a relation is used in a way that leaves variables unbound.
    ```
    error: ungrounded variable X in relation recv(X,Y)
    ```
    Fix: ensure all variables in relation expressions are bound by quantifiers or appear in the head.
 
-4. **Safety property violation** -- an exported action can reach an unsafe state.
+4. **Safety property violation** — an exported action can reach an unsafe state.
    ```
    error: safety property violated at line 85
    ```
    Fix: add missing invariants, strengthen preconditions, or fix the protocol logic.
 
-5. **Liveness/progress failure** -- the model cannot guarantee progress.
+5. **Liveness/progress failure** — the model cannot guarantee progress.
    Fix: check for deadlock scenarios and add fairness assumptions if appropriate.
 
 ## Debugging Workflow
 
 Follow this cycle when verification fails:
 
-1. **Check**: Run `ivy_check` on the model.
+1. **Check**: Run verification via `mcp__plugin_serena_serena__ivy_check`.
 2. **Read the error**: Note the line number, error type, and any counterexample trace.
-3. **Locate the issue**: Open the file at the indicated line. Understand the failing obligation.
+3. **Locate the issue**: Use `mcp__plugin_serena_serena__find_symbol` to navigate to the failing symbol.
 4. **Diagnose**: Determine if the issue is:
    - A missing invariant (the model under-specifies expected behavior)
    - A bug in the action logic (the model is incorrect)
    - A missing precondition (the action is called in unexpected contexts)
-5. **Fix**: Apply the minimal fix. Prefer adding invariants over weakening specifications.
-6. **Re-check**: Run `ivy_check` again. Repeat until all checks pass.
+5. **Fix**: Apply the minimal fix using `mcp__plugin_serena_serena__replace_symbol_body`. Prefer adding invariants over weakening specifications.
+6. **Re-check**: Run verification again. Repeat until all checks pass.
 
 ## Common Ivy Verification Errors and Fixes
 
@@ -130,3 +112,5 @@ The SMT solver could not decide within the time limit. Fix:
 - Simplify the proof obligation by breaking it into smaller lemmas.
 - Add ghost state or auxiliary invariants to guide the prover.
 - Use `isolate` boundaries to limit what the solver must reason about.
+
+**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use `/nct-check`, `/nct-compile`, or `/nct-model-info` commands.

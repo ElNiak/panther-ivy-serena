@@ -29,7 +29,7 @@ The attack lifecycle is organized into 3 phases with 6 stages plus a cross-cutti
 5. **Persistence** (`attack_maintain_persistence.ivy`) — Maintain access to the compromised system across reboots and security updates.
 
 **Phase 3: Extraction**
-6. **Exfiltration** (`attack_exflitration.ivy`) — Extract data from the target network.
+6. **Exfiltration** (`attack_exfiltration.ivy`) — Extract data from the target network.
 
 **Cross-cutting: White Noise** (`attack_white_noise.ivy`) — Distraction attacks to cover the primary attack operation.
 
@@ -37,7 +37,7 @@ The attack lifecycle is organized into 3 phases with 6 stages plus a cross-cutti
 
 The master file `attack_life_cycle.ivy` composes all stages:
 ```ivy
-#ivy lang1.7
+#lang ivy1.7
 include attack_white_noise
 # Infiltration
 include attack_reconnaissance
@@ -119,7 +119,7 @@ protocol-testing/apt/
 │   ├── attack_c2_communication.ivy
 │   ├── attack_privilege_escalation.ivy
 │   ├── attack_maintain_persistence.ivy
-│   ├── attack_exflitration.ivy
+│   ├── attack_exfiltration.ivy
 │   ├── attack_white_noise.ivy
 │   ├── quic_apt_lifecycle/    # QUIC-specific bindings
 │   ├── minip_apt_lifecycle/   # MiniP-specific bindings

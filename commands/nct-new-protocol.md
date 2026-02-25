@@ -71,7 +71,7 @@ For each selected layer, create a file with this template structure:
 # This file defines {layer purpose description}.
 # Reference: {relevant RFC section if known}
 
-# TODO: Add type definitions / frame definitions / etc.
+# [PLACEHOLDER] Define type identifiers, bit vectors, and enumerations for {prot}
 ```
 
 For entity definitions:
@@ -96,15 +96,15 @@ include ivy_{prot}_shim_client
 include ivy_{prot}_client_behavior
 
 after init {
-    # TODO: Initialize sockets, TLS, transport parameters
+    # [PLACEHOLDER] Initialize sockets, TLS, transport parameters
 }
 
-# TODO: Export actions for test mirror generation
+# [PLACEHOLDER] Export actions for test mirror generation
 # export frame.*.handle
 # export packet_event
 
 export action _finalize = {
-    # TODO: Add end-state verification
+    # [PLACEHOLDER] Add end-state verification
     # require is_no_error;
 }
 ```
