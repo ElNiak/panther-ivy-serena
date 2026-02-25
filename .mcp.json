@@ -1,9 +1,14 @@
 {
-  "serena": {
-    "command": "uvx",
-    "args": [
-      "--from", "git+https://github.com/ElNiak/panther-serena",
-      "serena", "start-mcp-server"
-    ]
+  "mcpServers": {
+    "panther-serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/ElNiak/panther-serena",
+        "serena",
+        "run"
+      ],
+      "env": {}
+    }
   }
 }

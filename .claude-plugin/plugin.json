@@ -1,8 +1,21 @@
 {
   "name": "panther-ivy-serena",
-  "displayName": "Ivy Language + PANTHER Tools",
-  "description": "Adds Ivy formal specification language support to Claude Code via a Serena fork with native Ivy LSP integration and verification tools (ivy_check, ivyc, ivy_show).",
-  "author": "ElNiak",
   "version": "0.1.0",
-  "repository": "https://github.com/ElNiak/panther-ivy-serena"
+  "description": "NCT/NACT/NSCT methodology guidance for Ivy protocol testing via panther-serena MCP tools. Provides agents, skills, and commands for formal protocol specification, attack modeling, and simulation-based testing using the 14-layer template architecture.",
+  "author": {
+    "name": "ElNiak",
+    "url": "https://github.com/ElNiak"
+  },
+  "repository": "https://github.com/ElNiak/panther-ivy-serena",
+  "license": "MIT",
+  "keywords": [
+    "ivy",
+    "protocol-testing",
+    "nct",
+    "nact",
+    "nsct",
+    "formal-verification",
+    "panther",
+    "serena"
+  ]
 }
