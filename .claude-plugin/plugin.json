@@ -1,0 +1,8 @@
+{
+  "name": "panther-ivy-serena",
+  "displayName": "Ivy Language + PANTHER Tools",
+  "description": "Adds Ivy formal specification language support to Claude Code via a Serena fork with native Ivy LSP integration and verification tools (ivy_check, ivyc, ivy_show).",
+  "author": "ElNiak",
+  "version": "0.1.0",
+  "repository": "https://github.com/ElNiak/panther-ivy-serena"
+}
