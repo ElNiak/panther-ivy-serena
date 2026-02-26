@@ -5,9 +5,23 @@ description: This skill should be used when the user asks about "using serena fo
 
 # Panther-Serena for Ivy
 
+## Two-MCP Architecture
+
+The panther-ivy-plugin exposes **two** MCP servers with distinct responsibilities:
+
+| Server | Role | Prefix | Tools |
+|--------|------|--------|-------|
+| **panther-serena** | Code manipulation and navigation | `mcp__plugin_panther-ivy-plugin_panther-serena__` | find_symbol, replace_symbol_body, create_text_file, etc. |
+| **ivy-tools** | Read-only diagnostics and analysis | `mcp__plugin_panther-ivy-plugin_ivy-tools__` | ivy_verify, ivy_lint, ivy_traceability_matrix, etc. |
+
+**This skill covers panther-serena** (code manipulation).
+For ivy-tools diagnostics, see the `ivy-tools-reference` skill.
+
 ## Overview
 
-All Ivy operations within the PANTHER framework MUST use panther-serena MCP tools instead of direct CLI commands. panther-serena provides semantic code navigation, formal verification, and compilation through a consistent MCP interface that integrates with Claude Code's tool system.
+All Ivy code manipulation within the PANTHER framework MUST use panther-serena MCP tools instead of direct CLI commands. panther-serena provides semantic code navigation, editing, and file operations through a consistent MCP interface that integrates with Claude Code's tool system.
+
+For verification and diagnostics (ivy_check, ivy_lint, coverage), use ivy-tools instead.
 
 ## Why panther-serena Instead of Direct CLI
 
@@ -19,83 +33,49 @@ All Ivy operations within the PANTHER framework MUST use panther-serena MCP tool
 
 ## Tool Mapping Table
 
-| Direct CLI Command | panther-serena MCP Tool | Usage |
+### panther-serena (code manipulation)
+
+| Operation | MCP Tool | Usage |
 |---|---|---|
-| `ivy_check file.ivy` | `mcp__plugin_serena_serena__ivy_check` | Formal verification |
-| `ivy_check isolate=X file.ivy` | `mcp__plugin_serena_serena__ivy_check` with `isolate` param | Isolate-specific checking |
-| `ivyc target=test file.ivy` | `mcp__plugin_serena_serena__ivy_compile` | Test compilation |
-| `ivyc target=test isolate=X file.ivy` | `mcp__plugin_serena_serena__ivy_compile` with `isolate` param | Isolate-specific compilation |
-| `ivy_show file.ivy` | `mcp__plugin_serena_serena__ivy_model_info` | Model introspection |
-| `ivy_show isolate=X file.ivy` | `mcp__plugin_serena_serena__ivy_model_info` with `isolate` param | Isolate-specific info |
-| `cat file.ivy` | `mcp__plugin_serena_serena__read_file` | Read file contents |
-| `grep pattern *.ivy` | `mcp__plugin_serena_serena__search_for_pattern` | Search across files |
-| Manual symbol lookup | `mcp__plugin_serena_serena__find_symbol` | Find specific symbols |
-| Manual file overview | `mcp__plugin_serena_serena__get_symbols_overview` | List top-level symbols |
-| Manual dependency trace | `mcp__plugin_serena_serena__find_referencing_symbols` | Find references |
-| Create new .ivy file | `mcp__plugin_serena_serena__create_text_file` | Write new files |
-| Edit .ivy file | `mcp__plugin_serena_serena__replace_symbol_body` | Edit symbol bodies |
-| Edit by regex | `mcp__plugin_serena_serena__replace_content` | Fine-grained edits |
+| `cat file.ivy` | `mcp__plugin_panther-ivy-plugin_panther-serena__read_file` | Read file contents |
+| `grep pattern *.ivy` | `mcp__plugin_panther-ivy-plugin_panther-serena__search_for_pattern` | Search across files |
+| Manual symbol lookup | `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` | Find specific symbols |
+| Manual file overview | `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` | List top-level symbols |
+| Manual dependency trace | `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` | Find references |
+| Create new .ivy file | `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` | Write new files |
+| Edit .ivy file | `mcp__plugin_panther-ivy-plugin_panther-serena__replace_symbol_body` | Edit symbol bodies |
+| Edit by regex | `mcp__plugin_panther-ivy-plugin_panther-serena__replace_content` | Fine-grained edits |
 
-## Ivy-Specific Tool Parameters
+### ivy-tools (diagnostics) -- see ivy-tools-reference skill
 
-### ivy_check — Formal Verification
-```
-Parameters:
-  relative_path: str          # Path to .ivy file (relative to project root)
-  isolate: str | None = None  # Optional isolate name to check specifically
-  max_answer_chars: int = -1  # Output limit (-1 for default)
+| Direct CLI Command | MCP Tool | Usage |
+|---|---|---|
+| `ivy_check file.ivy` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` | Formal verification |
+| `ivyc target=test file.ivy` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` | Test compilation |
+| `ivy_show file.ivy` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` | Model introspection |
+| Fast structural lint | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_lint` | No subprocess, ms |
 
-Returns: JSON { stdout, stderr, return_code }
+## Ivy Diagnostic Tools (via ivy-tools MCP)
 
-Underlying command: ivy_check [isolate=X] path.ivy
-```
+Verification, compilation, and model inspection have moved to the **ivy-tools** MCP server. See the `ivy-tools-reference` skill for full parameter documentation.
 
-Checks isolate assumptions, invariants, and safety properties. Return code 0 means all checks pass.
-
-**Common output patterns:**
-- `OK` — All checks passed
-- `FAIL` — One or more checks failed
-- `error: assumption failed` — An isolate assumption was violated
-- `error: invariant ... failed` — An invariant does not hold
-- `error: safety property ... violated` — A safety property was violated
-
-### ivy_compile — Test Compilation
-```
-Parameters:
-  relative_path: str          # Path to .ivy file
-  target: str = "test"        # Compilation target (usually "test")
-  isolate: str | None = None  # Optional isolate name
-  max_answer_chars: int = -1  # Output limit
-
-Returns: JSON { stdout, stderr, return_code }
-
-Underlying command: ivyc target=X [isolate=Y] path.ivy
-```
-
-Compiles Ivy model to C++ test executable. The `target=test` option generates a randomized test binary that uses Z3/SMT for action generation.
-
-**Common output patterns:**
-- Successful compilation produces no stdout, return code 0
-- Compilation errors appear in stderr with line numbers
-- Large models may take significant time to compile
-
-### ivy_model_info — Model Introspection
-```
-Parameters:
-  relative_path: str          # Path to .ivy file
-  isolate: str | None = None  # Optional isolate name
-  max_answer_chars: int = -1  # Output limit
-
-Returns: JSON { stdout, stderr, return_code }
-
-Underlying command: ivy_show [isolate=X] path.ivy
-```
-
-Displays model structure: types, relations, actions, invariants, and isolates. Useful for understanding model architecture and debugging.
+Quick reference:
+- `ivy_verify` — formal verification (`ivy_check`)
+- `ivy_compile` — test compilation (`ivyc`)
+- `ivy_model_info` — model introspection (`ivy_show`)
+- `ivy_lint` — fast structural lint (no subprocess)
+- `ivy_include_graph` — dependency graph
+- `ivy_capabilities` — check tool availability
+- `ivy_traceability_matrix` — RFC coverage matrix
+- `ivy_requirement_coverage` — coverage stats by level
+- `ivy_impact_analysis` — symbol edge analysis
+- `ivy_extract_requirements` — parse RFC normative statements
+- `ivy_cross_references` — graph neighborhood
+- `ivy_query_symbol` — rich symbol info
 
 ## Standard Serena Navigation Tools
 
-Beyond Ivy-specific tools, use standard serena tools for code navigation:
+Use panther-serena tools for code navigation and manipulation:
 
 ### Symbol Navigation
 - **`find_symbol`** — Find a symbol by name path. Use `name_path` with pattern like `module/function` and `include_body=True` to read implementation.
@@ -145,6 +125,6 @@ Beyond Ivy-specific tools, use standard serena tools for code navigation:
 
 ## Enforcement
 
-The panther-ivy-serena plugin includes a PreToolUse hook that blocks direct Ivy CLI calls in Bash. If a Bash command containing `ivy_check`, `ivyc`, `ivy_show`, or `ivy_to_cpp` is attempted, the hook rejects it with a message directing to the serena equivalents.
+The panther-ivy-plugin plugin includes a PreToolUse hook that blocks direct Ivy CLI calls in Bash. If a Bash command containing `ivy_check`, `ivyc`, `ivy_show`, or `ivy_to_cpp` is attempted, the hook rejects it with a message directing to the serena equivalents.
 
 Use `/nct-check`, `/nct-compile`, and `/nct-model-info` commands as convenient shortcuts for the most common operations.

@@ -9,6 +9,15 @@
         "run"
       ],
       "env": {}
+    },
+    "ivy-tools": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/ElNiak/ivy-lsp",
+        "ivy_lsp",
+        "--mcp"
+      ]
     }
   }
 }
