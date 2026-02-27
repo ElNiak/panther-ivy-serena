@@ -6,7 +6,9 @@
         "--from",
         "git+https://github.com/ElNiak/panther-serena",
         "serena",
-        "run"
+        "start-mcp-server",
+        "--context",
+        "claude-code"
       ],
       "env": {}
     },
@@ -14,7 +16,7 @@
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/ElNiak/ivy-lsp",
+        "git+https://github.com/ElNiak/ivy-lsp[mcp]",
         "ivy_lsp",
         "--mcp"
       ]
