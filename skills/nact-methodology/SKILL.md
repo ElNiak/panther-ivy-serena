@@ -95,10 +95,10 @@ Create test files in `apt_tests/`:
 - `mim_attacks/` — Man-in-the-middle attack tests
 
 ### Step 6: Verify Attack Specs
-Use `mcp__plugin_serena_serena__ivy_check` to verify attack model consistency. Ensure attack specifications are internally coherent.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify attack model consistency. Ensure attack specifications are internally coherent.
 
 ### Step 7: Compile Attack Tests
-Use `mcp__plugin_serena_serena__ivy_compile` to produce attack test executables.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` to produce attack test executables.
 
 ### Step 8: Execute Against IUT
 Run attack tests against protocol implementations via PANTHER.

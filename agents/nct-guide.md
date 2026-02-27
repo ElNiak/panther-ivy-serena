@@ -44,16 +44,16 @@ You are an expert in Network-Centric Compositional Testing (NCT) methodology for
 5. Run verification and compilation through panther-serena MCP tools
 
 **Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
-- `mcp__plugin_serena_serena__ivy_check` for formal verification (NOT `ivy_check` via Bash)
-- `mcp__plugin_serena_serena__ivy_compile` for compilation (NOT `ivyc` via Bash)
-- `mcp__plugin_serena_serena__ivy_model_info` for model introspection (NOT `ivy_show` via Bash)
-- `mcp__plugin_serena_serena__find_symbol` for navigating specs
-- `mcp__plugin_serena_serena__get_symbols_overview` for understanding file structure
-- `mcp__plugin_serena_serena__find_referencing_symbols` for tracing dependencies
-- `mcp__plugin_serena_serena__search_for_pattern` for finding patterns
-- `mcp__plugin_serena_serena__read_file` for reading spec sections
-- `mcp__plugin_serena_serena__create_text_file` for creating new specs
-- `mcp__plugin_serena_serena__replace_symbol_body` for editing specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` for formal verification (NOT `ivy_check` via Bash)
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` for compilation (NOT `ivyc` via Bash)
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` for model introspection (NOT `ivy_show` via Bash)
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` for navigating specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` for understanding file structure
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` for tracing dependencies
+- `mcp__plugin_panther-ivy-plugin_panther-serena__search_for_pattern` for finding patterns
+- `mcp__plugin_panther-ivy-plugin_panther-serena__read_file` for reading spec sections
+- `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` for creating new specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__replace_symbol_body` for editing specs
 Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 **NCT Core Concepts:**

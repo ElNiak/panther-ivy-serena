@@ -18,13 +18,13 @@ invariant preservation, and protocol correctness.
 Always use the panther-serena MCP tools for verification. Never run `ivy_check` directly via Bash.
 
 **Full model check:**
-Use `mcp__plugin_serena_serena__ivy_check` with `relative_path` pointing to the `.ivy` file.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` with `relative_path` pointing to the `.ivy` file.
 
 **Specific isolate check** (faster, targets one component):
-Use `mcp__plugin_serena_serena__ivy_check` with `relative_path` and `isolate` parameters.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` with `relative_path` and `isolate` parameters.
 
 **Model structure inspection:**
-Use `mcp__plugin_serena_serena__ivy_model_info` to understand model structure before verification.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` to understand model structure before verification.
 
 ### Verification via Plugin Commands
 
@@ -77,14 +77,14 @@ Common failure patterns:
 
 Follow this cycle when verification fails:
 
-1. **Check**: Run verification via `mcp__plugin_serena_serena__ivy_check`.
+1. **Check**: Run verification via `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`.
 2. **Read the error**: Note the line number, error type, and any counterexample trace.
-3. **Locate the issue**: Use `mcp__plugin_serena_serena__find_symbol` to navigate to the failing symbol.
+3. **Locate the issue**: Use `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` to navigate to the failing symbol.
 4. **Diagnose**: Determine if the issue is:
    - A missing invariant (the model under-specifies expected behavior)
    - A bug in the action logic (the model is incorrect)
    - A missing precondition (the action is called in unexpected contexts)
-5. **Fix**: Apply the minimal fix using `mcp__plugin_serena_serena__replace_symbol_body`. Prefer adding invariants over weakening specifications.
+5. **Fix**: Apply the minimal fix using `mcp__plugin_panther-ivy-plugin_panther-serena__replace_symbol_body`. Prefer adding invariants over weakening specifications.
 6. **Re-check**: Run verification again. Repeat until all checks pass.
 
 ## Common Ivy Verification Errors and Fixes

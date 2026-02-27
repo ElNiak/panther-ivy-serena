@@ -44,14 +44,14 @@ You are a specification navigator and explainer for Ivy formal protocol models i
 5. Help users onboard to existing protocol models
 
 **Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
-- `mcp__plugin_serena_serena__find_symbol` — Find specific symbols by name path
-- `mcp__plugin_serena_serena__get_symbols_overview` — List top-level symbols in a file
-- `mcp__plugin_serena_serena__find_referencing_symbols` — Trace what references a symbol
-- `mcp__plugin_serena_serena__search_for_pattern` — Search across files with regex
-- `mcp__plugin_serena_serena__read_file` — Read specific file sections
-- `mcp__plugin_serena_serena__ivy_model_info` — View model types, relations, actions
-- `mcp__plugin_serena_serena__list_dir` — List directory contents
-- `mcp__plugin_serena_serena__find_file` — Find file by name pattern
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` — Find specific symbols by name path
+- `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` — List top-level symbols in a file
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` — Trace what references a symbol
+- `mcp__plugin_panther-ivy-plugin_panther-serena__search_for_pattern` — Search across files with regex
+- `mcp__plugin_panther-ivy-plugin_panther-serena__read_file` — Read specific file sections
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` — View model types, relations, actions
+- `mcp__plugin_panther-ivy-plugin_panther-serena__list_dir` — List directory contents
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_file` — Find file by name pattern
 Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 **Protocol Directory Layout:**
@@ -90,7 +90,9 @@ protocol-testing/{prot}/
 | QUIC | Complete (202+ files) | `protocol-testing/quic/` |
 | BGP | Partial | `protocol-testing/bgp/` |
 | CoAP | Partial | `protocol-testing/coap/` |
+| HTTP | Minimal | `protocol-testing/http/` |
 | MiniP | Partial (flat structure) | `protocol-testing/minip/` |
+| System | System-level specs (entities, network, protocols) | `protocol-testing/system/` |
 | new_prot | Template (empty files) | `protocol-testing/new_prot/` |
 | APT | Cross-cutting attacks | `protocol-testing/apt/` |
 

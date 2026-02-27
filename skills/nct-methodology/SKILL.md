@@ -91,13 +91,13 @@ export action _finalize = {
 ```
 
 ### Step 8: Verify with panther-serena
-Use `mcp__plugin_serena_serena__ivy_check` to verify formal properties:
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify formal properties:
 - Isolate assumptions
 - Invariants
 - Safety properties
 
 ### Step 9: Compile Test
-Use `mcp__plugin_serena_serena__ivy_compile` with `target=test` to produce executable test binary.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` with `target=test` to produce executable test binary.
 
 ### Step 10: Execute Against IUT
 Run compiled test against the implementation via PANTHER experiment framework.

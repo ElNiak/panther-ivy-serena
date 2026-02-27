@@ -364,4 +364,4 @@ protocol_model/
 
 7. **Minimize axioms**: Every axiom is an unverified assumption. Prefer provable invariants.
 
-**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use `mcp__plugin_serena_serena__ivy_check`, `mcp__plugin_serena_serena__ivy_compile`, and `mcp__plugin_serena_serena__ivy_model_info` instead.
+**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`, `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile`, and `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` instead.

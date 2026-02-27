@@ -16,7 +16,7 @@ Run formal verification on the specified Ivy file using panther-serena.
 
 1. Accept the file path argument. If no file is provided, ask the user which .ivy file to verify.
 
-2. Call `mcp__plugin_serena_serena__ivy_check` with:
+2. Call `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` with:
    - `relative_path`: the provided file path
    - `isolate`: the isolate argument if provided, otherwise omit
 
@@ -48,9 +48,9 @@ All formal properties verified successfully.
 {Parse stderr for specific error messages and list each one}
 
 ### Suggested Actions
-- Use `mcp__plugin_serena_serena__ivy_model_info` to inspect the model structure
-- Use `mcp__plugin_serena_serena__find_symbol` to locate the failing symbol
+- Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` to inspect the model structure
+- Use `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` to locate the failing symbol
 - Check the behavior files for conflicting before/after monitors
 ```
 
-**IMPORTANT**: Do NOT run `ivy_check` directly via Bash. Always use `mcp__plugin_serena_serena__ivy_check`.
+**IMPORTANT**: Do NOT run `ivy_check` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`.

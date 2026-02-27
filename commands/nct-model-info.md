@@ -16,7 +16,7 @@ Display the model structure of the specified Ivy file using panther-serena.
 
 1. Accept the file path argument. If no file is provided, ask the user which .ivy file to inspect.
 
-2. Call `mcp__plugin_serena_serena__ivy_model_info` with:
+2. Call `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` with:
    - `relative_path`: the provided file path
    - `isolate`: the isolate argument if provided, otherwise omit
 
@@ -53,4 +53,4 @@ Display the model structure of the specified Ivy file using panther-serena.
 
 6. If return_code is non-zero, present the error and suggest using `/nct-check` to diagnose.
 
-**IMPORTANT**: Do NOT run `ivy_show` directly via Bash. Always use `mcp__plugin_serena_serena__ivy_model_info`.
+**IMPORTANT**: Do NOT run `ivy_show` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info`.

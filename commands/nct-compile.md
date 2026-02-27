@@ -23,7 +23,7 @@ Compile the specified Ivy model to a test executable using panther-serena.
    - If `target` argument provided, use it
    - Otherwise default to `"test"`
 
-3. Call `mcp__plugin_serena_serena__ivy_compile` with:
+3. Call `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` with:
    - `relative_path`: the provided file path
    - `target`: the compilation target
    - `isolate`: the isolate argument if provided, otherwise omit
@@ -60,8 +60,8 @@ The executable can be found in the build/ directory.
 
 ### Suggested Actions
 - Run `/nct-check {file}` first to verify formal properties
-- Use `mcp__plugin_serena_serena__get_symbols_overview` to check file structure
+- Use `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` to check file structure
 - Check for missing includes or undefined symbols
 ```
 
-**IMPORTANT**: Do NOT run `ivyc` directly via Bash. Always use `mcp__plugin_serena_serena__ivy_compile`.
+**IMPORTANT**: Do NOT run `ivyc` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile`.

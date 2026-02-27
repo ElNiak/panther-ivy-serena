@@ -20,10 +20,10 @@ if echo "$COMMAND" | grep -qE '\bivy_check\b|\bivyc\b|\bivy_show\b|\bivy_to_cpp\
     echo "BLOCKED: Direct Ivy CLI usage detected."
     echo ""
     echo "Use panther-serena MCP tools instead:"
-    echo "  ivy_check  -> mcp__plugin_serena_serena__ivy_check  (or /nct-check)"
-    echo "  ivyc       -> mcp__plugin_serena_serena__ivy_compile (or /nct-compile)"
-    echo "  ivy_show   -> mcp__plugin_serena_serena__ivy_model_info (or /nct-model-info)"
-    echo "  ivy_to_cpp -> mcp__plugin_serena_serena__ivy_compile"
+    echo "  ivy_check  -> mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check  (or /nct-check)"
+    echo "  ivyc       -> mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile (or /nct-compile)"
+    echo "  ivy_show   -> mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info (or /nct-model-info)"
+    echo "  ivy_to_cpp -> mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile"
     exit 1
 fi
 

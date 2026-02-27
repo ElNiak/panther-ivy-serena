@@ -41,7 +41,7 @@ Run formal verification on an Ivy specification file.
 **Notes:**
 
 - If no file is provided, the command will prompt for which `.ivy` file to verify.
-- Internally calls `mcp__plugin_serena_serena__ivy_check`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`.
 
 ---
 
@@ -71,7 +71,7 @@ Compile an Ivy model to a test executable.
 
 - If no file is provided, the command will prompt for which `.ivy` file to compile.
 - The default compilation target is `"test"` when not specified.
-- Internally calls `mcp__plugin_serena_serena__ivy_compile`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile`.
 
 ---
 
@@ -100,7 +100,7 @@ A structured `Model Structure` report organized into sections: Types, Relations,
 
 - If no file is provided, the command will prompt for which `.ivy` file to inspect.
 - If the model cannot be parsed (`return_code` non-zero), the command suggests using `/nct-check` to diagnose the issue.
-- Internally calls `mcp__plugin_serena_serena__ivy_model_info`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info`.
 
 ---
 
@@ -136,7 +136,7 @@ A `Test Specification Created` report showing the file path, protocol, role unde
   - `mim` -> `protocol-testing/{prot}/{prot}_tests/mim_tests/{prot}_mim_test_{name}.ivy`
   - `attacker` -> `protocol-testing/apt/apt_tests/server_attacks/{prot}_attacker_test_{name}.ivy`
 - If a base test file already exists for the protocol/role, the new test includes it (variant pattern); otherwise a full template is generated.
-- Internally uses `mcp__plugin_serena_serena__create_text_file` and `mcp__plugin_serena_serena__find_file`.
+- Internally uses `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` and `mcp__plugin_panther-ivy-plugin_panther-serena__find_file`.
 
 ---
 
@@ -171,7 +171,7 @@ A `Protocol Scaffold Created` report listing all generated files with their laye
   - **Infrastructure** (layers 13--14): serialization/deserialization, utilities.
 - A minimal viable subset (layers 1, 4, 5, 7, 10, 11, 12) is available for users who want to start small.
 - Creates a directory structure under `protocol-testing/{prot}/` with subdirectories for stack, entities, shims, utils, and tests.
-- Internally uses `mcp__plugin_serena_serena__create_text_file` to create all files.
+- Internally uses `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` to create all files.
 
 ## Common Workflows
 

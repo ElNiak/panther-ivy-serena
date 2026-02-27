@@ -42,11 +42,11 @@ Check if a base test file exists for this protocol and role:
 - `{prot}_server_test.ivy` for server tests
 - `{prot}_client_test.ivy` for client tests
 
-Use `mcp__plugin_serena_serena__find_file` to search. If a base test exists, the new test should include it.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__find_file` to search. If a base test exists, the new test should include it.
 
 ### Step 4: Create Test File
 
-Use `mcp__plugin_serena_serena__create_text_file` to create the test file.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` to create the test file.
 
 **If base test exists** (variant pattern):
 ```ivy
@@ -126,4 +126,4 @@ Note on role inversion: if testing a **server**, the opposing role (what Ivy pla
 4. Use `/nct-compile {file_path}` to build the test executable
 ```
 
-**IMPORTANT**: Use `mcp__plugin_serena_serena__create_text_file` and `mcp__plugin_serena_serena__find_file` for all file operations.
+**IMPORTANT**: Use `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` and `mcp__plugin_panther-ivy-plugin_panther-serena__find_file` for all file operations.

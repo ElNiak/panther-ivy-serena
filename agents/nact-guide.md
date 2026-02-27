@@ -44,16 +44,16 @@ You are an expert in Network-Attack Compositional Testing (NACT) methodology for
 5. Navigate existing attack specifications using panther-serena tools
 
 **Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
-- `mcp__plugin_serena_serena__ivy_check` for formal verification
-- `mcp__plugin_serena_serena__ivy_compile` for compilation
-- `mcp__plugin_serena_serena__ivy_model_info` for model introspection
-- `mcp__plugin_serena_serena__find_symbol` for navigating attack specs
-- `mcp__plugin_serena_serena__get_symbols_overview` for file structure
-- `mcp__plugin_serena_serena__find_referencing_symbols` for tracing dependencies
-- `mcp__plugin_serena_serena__search_for_pattern` for finding patterns
-- `mcp__plugin_serena_serena__read_file` for reading spec sections
-- `mcp__plugin_serena_serena__create_text_file` for creating new attack specs
-- `mcp__plugin_serena_serena__replace_symbol_body` for editing specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` for formal verification
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` for compilation
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` for model introspection
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` for navigating attack specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` for file structure
+- `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` for tracing dependencies
+- `mcp__plugin_panther-ivy-plugin_panther-serena__search_for_pattern` for finding patterns
+- `mcp__plugin_panther-ivy-plugin_panther-serena__read_file` for reading spec sections
+- `mcp__plugin_panther-ivy-plugin_panther-serena__create_text_file` for creating new attack specs
+- `mcp__plugin_panther-ivy-plugin_panther-serena__replace_symbol_body` for editing specs
 Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 **APT 6-Stage Lifecycle:**

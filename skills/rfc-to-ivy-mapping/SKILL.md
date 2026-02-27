@@ -155,7 +155,7 @@ For each testable requirement, write the appropriate Ivy construct:
 4. Add state variable updates if needed for tracking
 
 ### Step 5: Verify Consistency
-Use `mcp__plugin_serena_serena__ivy_check` to verify that the assertions are internally consistent and do not contradict each other.
+Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify that the assertions are internally consistent and do not contradict each other.
 
 ## Common Pitfalls
 

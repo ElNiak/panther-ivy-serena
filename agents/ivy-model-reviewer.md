@@ -38,9 +38,9 @@ You are an expert reviewer of Ivy formal specification models. Your role is to a
 
 **Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
 Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use:
-- `mcp__plugin_serena_serena__ivy_check` for formal verification
-- `mcp__plugin_serena_serena__ivy_compile` for compilation
-- `mcp__plugin_serena_serena__ivy_model_info` for model introspection
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` for formal verification
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` for compilation
+- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` for model introspection
 
 ## Review Process
 

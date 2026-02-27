@@ -1,9 +1,10 @@
 {
   "name": "panther-ivy-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "NCT/NACT/NSCT methodology guidance for Ivy protocol testing via panther-serena MCP tools. Provides agents, skills, and commands for formal protocol specification, attack modeling, and simulation-based testing using the 14-layer template architecture.",
   "author": {
     "name": "ElNiak",
+    "email": "elniak@github.com",
     "url": "https://github.com/ElNiak"
   },
   "repository": "https://github.com/ElNiak/panther-ivy-plugin",

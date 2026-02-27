@@ -192,11 +192,21 @@ All agents use MCP tools from two servers configured in `.mcp.json`:
 - **panther-serena** -- Semantic code navigation (`find_symbol`, `get_symbols_overview`, `find_referencing_symbols`, `search_for_pattern`, `read_file`, `list_dir`, `find_file`) and Ivy operations (`ivy_check`, `ivy_compile`, `ivy_model_info`, `create_text_file`, `replace_symbol_body`)
 - **ivy-tools** -- Ivy LSP tools for requirement extraction, traceability matrices, and coverage analysis (`ivy_extract_requirements`, `ivy_traceability_matrix`, `ivy_requirement_coverage`)
 
+**Available Protocol Models:**
+- **QUIC** (complete, 202+ files) — `protocol-testing/quic/`
+- **BGP** (partial) — `protocol-testing/bgp/`
+- **CoAP** (partial) — `protocol-testing/coap/`
+- **HTTP** (minimal) — `protocol-testing/http/`
+- **MiniP** (partial, flat structure) — `protocol-testing/minip/`
+- **System** (system-level specs: entities, network, protocols) — `protocol-testing/system/`
+- **new_prot** (template, empty files) — `protocol-testing/new_prot/`
+- **APT** (cross-cutting attacks) — `protocol-testing/apt/`
+
 A `PreToolUse` hook (`hooks/scripts/block-direct-ivy.sh`) intercepts all `Bash` tool calls and blocks direct invocations of `ivy_check`, `ivyc`, `ivy_show`, and `ivy_to_cpp`. If a blocked command is detected, the hook exits with a message directing the user to the corresponding MCP tool:
 
 | Blocked CLI command | Required MCP tool |
 |---------------------|-------------------|
-| `ivy_check` | `mcp__plugin_serena_serena__ivy_check` |
-| `ivyc` | `mcp__plugin_serena_serena__ivy_compile` |
-| `ivy_show` | `mcp__plugin_serena_serena__ivy_model_info` |
-| `ivy_to_cpp` | `mcp__plugin_serena_serena__ivy_compile` |
+| `ivy_check` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` |
+| `ivyc` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` |
+| `ivy_show` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` |
+| `ivy_to_cpp` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` |
