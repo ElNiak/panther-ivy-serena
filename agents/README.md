@@ -189,8 +189,8 @@ NCT and NACT are complementary: NCT verifies correctness, NACT verifies security
 ## MCP Tool Enforcement
 
 All agents use MCP tools from two servers configured in `.mcp.json`:
-- **panther-serena** -- Semantic code navigation (`find_symbol`, `get_symbols_overview`, `find_referencing_symbols`, `search_for_pattern`, `read_file`, `list_dir`, `find_file`) and Ivy operations (`ivy_check`, `ivy_compile`, `ivy_model_info`, `create_text_file`, `replace_symbol_body`)
-- **ivy-tools** -- Ivy LSP tools for requirement extraction, traceability matrices, and coverage analysis (`ivy_extract_requirements`, `ivy_traceability_matrix`, `ivy_requirement_coverage`)
+- **panther-serena** -- Semantic code navigation (`find_symbol`, `get_symbols_overview`, `find_referencing_symbols`, `search_for_pattern`, `read_file`, `list_dir`, `find_file`) and file operations (`create_text_file`, `replace_symbol_body`)
+- **ivy-tools** -- Ivy verification (`ivy_verify`, `ivy_compile`, `ivy_model_info`), linting (`ivy_lint`), requirement extraction (`ivy_extract_requirements`), traceability (`ivy_traceability_matrix`, `ivy_requirement_coverage`), and analysis tools (`ivy_impact_analysis`, `ivy_cross_references`, `ivy_query_symbol`)
 
 **Available Protocol Models:**
 - **QUIC** (complete, 202+ files) — `protocol-testing/quic/`
@@ -206,7 +206,7 @@ A `PreToolUse` hook (`hooks/scripts/block-direct-ivy.sh`) intercepts all `Bash` 
 
 | Blocked CLI command | Required MCP tool |
 |---------------------|-------------------|
-| `ivy_check` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` |
-| `ivyc` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` |
-| `ivy_show` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` |
-| `ivy_to_cpp` | `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` |
+| `ivy_check` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` |
+| `ivyc` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` |
+| `ivy_show` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` |
+| `ivy_to_cpp` | `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` |

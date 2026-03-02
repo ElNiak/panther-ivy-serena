@@ -101,7 +101,7 @@ Use panther-serena tools for code navigation and manipulation:
 1. **Navigate** — Use `find_symbol` and `get_symbols_overview` to locate relevant code
 2. **Understand** — Use `read_file` and `find_referencing_symbols` to understand context and dependencies
 3. **Edit** — Use `replace_symbol_body` or `create_text_file` for modifications
-4. **Verify** — Use `ivy_check` to confirm formal properties still hold
+4. **Verify** — Use `ivy_verify` (ivy-tools) to confirm formal properties still hold
 
 ### Example: Adding a New Requirement
 
@@ -110,14 +110,14 @@ Use panther-serena tools for code navigation and manipulation:
 2. find_symbol("frame/stream/handle")            # Read the current implementation
 3. find_referencing_symbols("frame.stream.handle") # Find all tests using it
 4. replace_symbol_body(...)                       # Add new before/after monitor
-5. ivy_check(relative_path="...")                 # Verify consistency
+5. ivy_verify(relative_path="...")                # Verify consistency (ivy-tools)
 ```
 
 ## Prerequisites
 
 1. **panther-serena** installed with Ivy tools enabled:
    - `ivy` added to `.serena/project.yml` languages list
-   - `ivy_check`, `ivy_compile`, `ivy_model_info` in `included_optional_tools`
+   - `ivy_diagnostics`, `ivy_goto_definition`, `ivy_server_status`, `ivy_test_scope` in `included_optional_tools`
 2. **ivy_lsp** installed:
    - `pip install ivy-lsp` (from PyPI)
    - Or `pip install -e ".[lsp]"` from panther_ivy directory
@@ -125,6 +125,6 @@ Use panther-serena tools for code navigation and manipulation:
 
 ## Enforcement
 
-The panther-ivy-plugin plugin includes a PreToolUse hook that blocks direct Ivy CLI calls in Bash. If a Bash command containing `ivy_check`, `ivyc`, `ivy_show`, or `ivy_to_cpp` is attempted, the hook rejects it with a message directing to the serena equivalents.
+The panther-ivy-plugin plugin includes a PreToolUse hook that blocks direct Ivy CLI calls in Bash. If a Bash command containing `ivy_check`, `ivyc`, `ivy_show`, or `ivy_to_cpp` is attempted, the hook rejects it with a message directing to the ivy-tools MCP equivalents.
 
 Use `/nct-check`, `/nct-compile`, and `/nct-model-info` commands as convenient shortcuts for the most common operations.
