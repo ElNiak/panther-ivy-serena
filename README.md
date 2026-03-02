@@ -58,8 +58,8 @@ The plugin relies on two MCP servers with complementary roles:
 
 | Server | Role | Key Tools | Source |
 |--------|------|-----------|--------|
-| **panther-serena** | Code manipulation and Ivy operations | `find_symbol`, `replace_symbol_body`, `create_text_file`, `ivy_check`, `ivy_compile`, `ivy_model_info` | [panther-serena](https://github.com/ElNiak/panther-serena) |
-| **ivy-tools** | Read-only diagnostics and analysis | `ivy_verify`, `ivy_lint`, `ivy_traceability_matrix`, `ivy_requirement_coverage`, `ivy_impact_analysis`, `ivy_extract_requirements` | [ivy-lsp](https://github.com/ElNiak/ivy-lsp) |
+| **panther-serena** | Code manipulation and LSP navigation | `find_symbol`, `replace_symbol_body`, `create_text_file`, `ivy_diagnostics`, `ivy_goto_definition`, `ivy_server_status`, `ivy_test_scope` | [panther-serena](https://github.com/ElNiak/panther-serena) |
+| **ivy-tools** | Verification, analysis, and visualization | `ivy_verify`, `ivy_compile`, `ivy_model_info`, `ivy_lint`, `ivy_traceability_matrix`, `ivy_requirement_coverage`, `ivy_impact_analysis` | [ivy-lsp](https://github.com/ElNiak/ivy-lsp) |
 
 A **PreToolUse hook** (`hooks/scripts/block-direct-ivy.sh`) intercepts Bash tool calls and blocks direct invocations of `ivy_check`, `ivyc`, `ivy_show`, and `ivy_to_cpp`, redirecting to the corresponding MCP tool. This ensures all Ivy operations go through the MCP servers for consistent behavior and structured output.
 

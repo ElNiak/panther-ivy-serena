@@ -36,7 +36,7 @@
 | Skill | Description | Trigger Keywords |
 |-------|-------------|------------------|
 | [ivy-tools-reference](ivy-tools-reference/) | Tool catalog for the ivy-tools MCP server (read-only diagnostics): ivy_verify, ivy_compile, ivy_model_info, ivy_lint, ivy_include_graph, ivy_capabilities, ivy_traceability_matrix, ivy_requirement_coverage, ivy_impact_analysis, ivy_extract_requirements, ivy_cross_references, ivy_query_symbol | "ivy diagnostics", "ivy lint", "ivy verification", "ivy coverage", "ivy traceability", "ivy include graph", "ivy capabilities", "ivy impact analysis", "ivy requirements", "ivy cross references", "ivy query symbol" |
-| [panther-serena-for-ivy](panther-serena-for-ivy/) | Tool mapping for the panther-serena MCP server (code manipulation): find_symbol, replace_symbol_body, create_text_file, search_for_pattern, and why panther-serena is required instead of direct CLI commands | "using serena for Ivy", "Ivy tool guidance", "panther-serena tools", "how to check Ivy files", "how to compile Ivy", "formal verification tools", "ivy_check alternative", "MCP tools for Ivy" |
+| [panther-serena-for-ivy](panther-serena-for-ivy/) | Tool mapping for the panther-serena MCP server (code navigation/editing): find_symbol, replace_symbol_body, create_text_file, search_for_pattern, ivy_diagnostics, ivy_goto_definition, ivy_server_status, ivy_test_scope | "using serena for Ivy", "Ivy tool guidance", "panther-serena tools", "code navigation", "symbol editing", "MCP tools for Ivy" |
 
 ### Workflow
 
