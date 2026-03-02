@@ -1,6 +1,6 @@
 ---
 name: nct-compile
-description: Compile an Ivy model to a test binary via panther-serena
+description: Compile an Ivy model to a test binary via ivy-tools
 arguments:
   - name: file
     description: Path to the .ivy file to compile (relative to project root)
@@ -13,7 +13,7 @@ arguments:
     required: false
 ---
 
-Compile the specified Ivy model to a test executable using panther-serena.
+Compile the specified Ivy model to a test executable using ivy-tools.
 
 ## Instructions
 
@@ -23,16 +23,16 @@ Compile the specified Ivy model to a test executable using panther-serena.
    - If `target` argument provided, use it
    - Otherwise default to `"test"`
 
-3. Call `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` with:
+3. Call `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` with:
    - `relative_path`: the provided file path
    - `target`: the compilation target
    - `isolate`: the isolate argument if provided, otherwise omit
 
-4. Parse the JSON result containing `stdout`, `stderr`, and `return_code`.
+4. Parse the JSON result containing `success`, `output`, `target`, and `duration_seconds`.
 
 5. Present results in this structured format:
 
-### If return_code is 0 (SUCCESS):
+### If success is true (SUCCESS):
 ```
 ## Compilation Result: SUCCESS
 
@@ -48,7 +48,7 @@ The executable can be found in the build/ directory.
 - Use `/nct-check` to verify formal properties before running
 ```
 
-### If return_code is non-zero (FAILURE):
+### If success is false (FAILURE):
 ```
 ## Compilation Result: FAILURE
 
@@ -56,7 +56,7 @@ The executable can be found in the build/ directory.
 **Target:** {target}
 
 ### Errors
-{Parse stderr for specific error messages}
+{Parse output for specific error messages}
 
 ### Suggested Actions
 - Run `/nct-check {file}` first to verify formal properties
@@ -64,4 +64,4 @@ The executable can be found in the build/ directory.
 - Check for missing includes or undefined symbols
 ```
 
-**IMPORTANT**: Do NOT run `ivyc` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile`.
+**IMPORTANT**: Do NOT run `ivyc` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile`.

@@ -1,6 +1,6 @@
 ---
 name: nct-model-info
-description: Display the structure of an Ivy model via panther-serena
+description: Display the structure of an Ivy model via ivy-tools
 arguments:
   - name: file
     description: Path to the .ivy file to inspect (relative to project root)
@@ -10,17 +10,17 @@ arguments:
     required: false
 ---
 
-Display the model structure of the specified Ivy file using panther-serena.
+Display the model structure of the specified Ivy file using ivy-tools.
 
 ## Instructions
 
 1. Accept the file path argument. If no file is provided, ask the user which .ivy file to inspect.
 
-2. Call `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` with:
+2. Call `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` with:
    - `relative_path`: the provided file path
    - `isolate`: the isolate argument if provided, otherwise omit
 
-3. Parse the JSON result containing `stdout`, `stderr`, and `return_code`.
+3. Parse the JSON result containing `success`, `output`, and `duration_seconds`.
 
 4. Present the model structure in a readable format:
 
@@ -51,6 +51,6 @@ Display the model structure of the specified Ivy file using panther-serena.
 5. If the output is large, organize it into collapsible sections or summarize with key counts:
    - "X types, Y relations, Z actions, W invariants"
 
-6. If return_code is non-zero, present the error and suggest using `/nct-check` to diagnose.
+6. If success is false, present the error and suggest using `/nct-check` to diagnose.
 
-**IMPORTANT**: Do NOT run `ivy_show` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info`.
+**IMPORTANT**: Do NOT run `ivy_show` directly via Bash. Always use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info`.
