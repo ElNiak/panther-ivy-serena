@@ -90,14 +90,14 @@ export action _finalize = {
 }
 ```
 
-### Step 8: Verify with panther-serena
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify formal properties:
+### Step 8: Verify with ivy-tools
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` to verify formal properties:
 - Isolate assumptions
 - Invariants
 - Safety properties
 
 ### Step 9: Compile Test
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` with `target=test` to produce executable test binary.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` with `target=test` to produce executable test binary.
 
 ### Step 10: Execute Against IUT
 Run compiled test against the implementation via PANTHER experiment framework.
@@ -116,7 +116,7 @@ Run compiled test against the implementation via PANTHER experiment framework.
 | Create new specs | `create_text_file` | Write new .ivy files |
 | Edit specs | `replace_symbol_body` | Modify existing symbols |
 
-**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 ## Directory Structure
 

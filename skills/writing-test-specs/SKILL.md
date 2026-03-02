@@ -197,7 +197,7 @@ Example mapping:
 | Verify test | `ivy_check` |
 | Compile test | `ivy_compile` |
 
-**IMPORTANT**: Always use panther-serena MCP tools. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 ## Quick Reference: Test File Checklist
 

@@ -2,15 +2,15 @@
 
 ## Overview
 
-This directory contains 5 slash commands for common Ivy formal verification operations within the panther-ivy-plugin for Claude Code. All commands use the `ivy-tools` / `panther-serena` MCP tools internally -- they do NOT invoke Ivy CLI tools (e.g., `ivy_check`, `ivyc`, `ivy_show`) directly via Bash.
+This directory contains 5 slash commands for common Ivy formal verification operations within the panther-ivy-plugin for Claude Code. All commands use the `ivy-tools` MCP tools for verification/compilation/model-info and `panther-serena` MCP tools for code navigation -- they do NOT invoke Ivy CLI tools (e.g., `ivy_check`, `ivyc`, `ivy_show`) directly via Bash.
 
 ## Command Reference
 
 | Command | Description | Required Args | Optional Args |
 |---------|-------------|---------------|---------------|
-| `/nct-check` | Run formal verification on an Ivy specification file via panther-serena | `file` -- path to `.ivy` file | `isolate` -- isolate name to check |
-| `/nct-compile` | Compile an Ivy model to a test binary via panther-serena | `file` -- path to `.ivy` file | `target` -- compilation target (default `"test"`); `isolate` -- isolate name |
-| `/nct-model-info` | Display the structure of an Ivy model via panther-serena | `file` -- path to `.ivy` file | `isolate` -- isolate name to inspect |
+| `/nct-check` | Run formal verification on an Ivy specification file via ivy-tools | `file` -- path to `.ivy` file | `isolate` -- isolate name to check |
+| `/nct-compile` | Compile an Ivy model to a test binary via ivy-tools | `file` -- path to `.ivy` file | `target` -- compilation target (default `"test"`); `isolate` -- isolate name |
+| `/nct-model-info` | Display the structure of an Ivy model via ivy-tools | `file` -- path to `.ivy` file | `isolate` -- isolate name to inspect |
 | `/nct-new-test` | Scaffold a new Ivy test specification for a protocol | _(none -- interactive)_ | `protocol` -- protocol abbreviation; `role` -- `"client"`, `"server"`, `"mim"`, or `"attacker"`; `name` -- test name suffix |
 | `/nct-new-protocol` | Interactively scaffold a new protocol from the 14-layer template | _(none -- interactive)_ | `name` -- protocol name (e.g., `"coap"`, `"mqtt"`, `"ssh"`) |
 
@@ -41,7 +41,7 @@ Run formal verification on an Ivy specification file.
 **Notes:**
 
 - If no file is provided, the command will prompt for which `.ivy` file to verify.
-- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify`.
 
 ---
 
@@ -71,7 +71,7 @@ Compile an Ivy model to a test executable.
 
 - If no file is provided, the command will prompt for which `.ivy` file to compile.
 - The default compilation target is `"test"` when not specified.
-- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile`.
 
 ---
 
@@ -100,7 +100,7 @@ A structured `Model Structure` report organized into sections: Types, Relations,
 
 - If no file is provided, the command will prompt for which `.ivy` file to inspect.
 - If the model cannot be parsed (`return_code` non-zero), the command suggests using `/nct-check` to diagnose the issue.
-- Internally calls `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info`.
+- Internally calls `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info`.
 
 ---
 

@@ -43,10 +43,10 @@ You are a verification and diagnosis specialist for Ivy formal protocol specific
 4. Cross-reference failures with spec structure to identify root causes
 5. Present results in clear, structured PASS/FAIL format
 
-**Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` — Run formal verification
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` — Compile to test executable
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` — Inspect model structure
+**Critical Rule: You MUST use ivy-tools MCP tools for Ivy verification operations and panther-serena for code navigation.**
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` — Run formal verification
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` — Compile to test executable
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` — Inspect model structure
 - `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` — Locate symbols involved in failures
 - `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` — Understand file structure
 - `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` — Trace dependencies

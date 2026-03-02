@@ -95,10 +95,10 @@ Create test files in `apt_tests/`:
 - `mim_attacks/` — Man-in-the-middle attack tests
 
 ### Step 6: Verify Attack Specs
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify attack model consistency. Ensure attack specifications are internally coherent.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` to verify attack model consistency. Ensure attack specifications are internally coherent.
 
 ### Step 7: Compile Attack Tests
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` to produce attack test executables.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` to produce attack test executables.
 
 ### Step 8: Execute Against IUT
 Run attack tests against protocol implementations via PANTHER.
@@ -145,7 +145,7 @@ Same tools as NCT apply, with focus on navigating the `apt/` directory structure
 | Create attack specs | `create_text_file` | Write new attack .ivy files |
 | Edit attack specs | `replace_symbol_body` | Modify attack specifications |
 
-**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 ## Relationship to NCT
 

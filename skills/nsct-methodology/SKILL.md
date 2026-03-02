@@ -123,7 +123,7 @@ NSCT requires a specific Z3 build mode for Shadow NS compatibility:
 
 ## Serena Tools for NSCT
 
-NSCT uses the same panther-serena tools as NCT for specification work:
+NSCT uses the same ivy-tools and panther-serena tools as NCT for specification work:
 
 | Step | Tool | Usage |
 |---|---|---|
@@ -133,7 +133,7 @@ NSCT uses the same panther-serena tools as NCT for specification work:
 | Create configs | `create_text_file` | Write PANTHER experiment configs |
 | Search patterns | `search_for_pattern` | Find relevant configuration patterns |
 
-**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
 
 ## Comprehensive Testing Strategy
 

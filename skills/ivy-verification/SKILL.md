@@ -13,18 +13,18 @@ invariant preservation, and protocol correctness.
 
 ## Running Verification
 
-### Using panther-serena MCP tools (required)
+### Using ivy-tools MCP tools (required)
 
-Always use the panther-serena MCP tools for verification. Never run `ivy_check` directly via Bash.
+Always use the ivy-tools MCP tools for verification. Never run `ivy_check` directly via Bash.
 
 **Full model check:**
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` with `relative_path` pointing to the `.ivy` file.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` with `relative_path` pointing to the `.ivy` file.
 
 **Specific isolate check** (faster, targets one component):
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` with `relative_path` and `isolate` parameters.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` with `relative_path` and `isolate` parameters.
 
 **Model structure inspection:**
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` to understand model structure before verification.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` to understand model structure before verification.
 
 ### Verification via Plugin Commands
 
@@ -77,9 +77,9 @@ Common failure patterns:
 
 Follow this cycle when verification fails:
 
-1. **Check**: Run verification via `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check`.
+1. **Check**: Run verification via `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify`.
 2. **Read the error**: Note the line number, error type, and any counterexample trace.
-3. **Locate the issue**: Use `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` to navigate to the failing symbol.
+3. **Locate the issue**: Use `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` to navigate to the failing symbol (panther-serena provides code navigation).
 4. **Diagnose**: Determine if the issue is:
    - A missing invariant (the model under-specifies expected behavior)
    - A bug in the action logic (the model is incorrect)
@@ -113,4 +113,4 @@ The SMT solver could not decide within the time limit. Fix:
 - Add ghost state or auxiliary invariants to guide the prover.
 - Use `isolate` boundaries to limit what the solver must reason about.
 
-**IMPORTANT**: Always use panther-serena MCP tools for Ivy operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use `/nct-check`, `/nct-compile`, or `/nct-model-info` commands.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash. Use `/nct-check`, `/nct-compile`, or `/nct-model-info` commands.

@@ -43,10 +43,10 @@ You are an expert in Network-Attack Compositional Testing (NACT) methodology for
 4. Create protocol-specific attack bindings that map generic APT stages to protocol actions
 5. Navigate existing attack specifications using panther-serena tools
 
-**Critical Rule: You MUST use panther-serena MCP tools for ALL Ivy operations.**
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` for formal verification
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_compile` for compilation
-- `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_model_info` for model introspection
+**Critical Rule: You MUST use ivy-tools MCP tools for Ivy verification operations and panther-serena for code navigation.**
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` for formal verification
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_compile` for compilation
+- `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_model_info` for model introspection
 - `mcp__plugin_panther-ivy-plugin_panther-serena__find_symbol` for navigating attack specs
 - `mcp__plugin_panther-ivy-plugin_panther-serena__get_symbols_overview` for file structure
 - `mcp__plugin_panther-ivy-plugin_panther-serena__find_referencing_symbols` for tracing dependencies

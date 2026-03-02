@@ -155,7 +155,7 @@ For each testable requirement, write the appropriate Ivy construct:
 4. Add state variable updates if needed for tracking
 
 ### Step 5: Verify Consistency
-Use `mcp__plugin_panther-ivy-plugin_panther-serena__ivy_check` to verify that the assertions are internally consistent and do not contradict each other.
+Use `mcp__plugin_panther-ivy-plugin_ivy-tools__ivy_verify` to verify that the assertions are internally consistent and do not contradict each other.
 
 ## Common Pitfalls
 
@@ -184,4 +184,4 @@ Avoid creating circular `require` chains where action A requires state set by ac
 | Create new assertion | `replace_symbol_body`, `insert_after_symbol` |
 | Verify consistency | `ivy_check` |
 
-**IMPORTANT**: Always use panther-serena MCP tools. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
+**IMPORTANT**: Always use ivy-tools MCP tools for Ivy verification operations. Never run ivy_check, ivyc, ivy_show, or ivy_to_cpp directly via Bash.
